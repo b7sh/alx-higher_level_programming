@@ -2,6 +2,4 @@
 for x in range(100):
     if x != 99:
         print("{:02}".format(x), end=", ")
-    else:
-        print("{:02}".format(x), end="")
-        print()
+    print("{:02}".format(x), end="")
