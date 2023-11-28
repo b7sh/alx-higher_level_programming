@@ -6,4 +6,4 @@ def print_last_digit(number):
         last_digit = number % 10
     else:
         last_digit = 0
-    return last_digit
+    print("{}".formar(last_digit))
