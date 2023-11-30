@@ -1,9 +1,15 @@
 #!/usr/bin/python3
 def magic_calculation(a, b):
+    from calculator_1 import add, sub
     if a > b:
-        result = a + b
+        result = add(a, b)
     else:
         result = 0
-        for i in range(21, 89):
-            result += i
-    return result
+        for i in range(4, 6):
+            result = add(result, i)
+        return result
+    return sub(a, b)
+
+a = 5
+b = 10
+print(magic_calculation(a, b))
