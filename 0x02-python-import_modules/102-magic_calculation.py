@@ -9,7 +9,3 @@ def magic_calculation(a, b):
             result = add(result, i)
         return result
     return sub(a, b)
-
-a = 5
-b = 10
-print(magic_calculation(a, b))
