@@ -1,6 +1,9 @@
 #!/usr/bin/python
 def magic_calculation(a, b):
+    from magic_caculation import add, sub
     if a < b:
-        return a + b
+        c = add(a, b)
     for i in range(4, 6)
-        return c + b
+        c = add(c, b)
+        return c
+    return sub(a, b)
