@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 def magic_calculation(a, b):
-    #from magic_calculation import add, sub
-    if a < b:
+    if a > b:
         result = a + b
     elif a > b:
         result = 0
