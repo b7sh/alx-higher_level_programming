@@ -3,5 +3,5 @@ def magic_calculation(a, b):
     if a > b:
         result = a + b
     else:
-        result = a - b
+        result = a // 10 - b
     return result
