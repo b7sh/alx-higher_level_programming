@@ -24,13 +24,19 @@ void reverse_listint(listint_t **head)
 	*head = prev;
 }
 
+/**
+ * is_palindrome - check if the list palindrome
+ * @head: pointer to the first node
+ * Return: 1 or 0
+*/
 
 int is_palindrome(listint_t **head)
 {
 	listint_t *s = *head, *f = *head, *temp = *head, *reverse = NULL;
+
 	if (*head == NULL || (*head)->next == NULL)
-		return(1);
-	while(1)
+		return (1);
+	while (1)
 	{
 		f = f->next->next;
 		if (!f)
@@ -54,9 +60,9 @@ int is_palindrome(listint_t **head)
 			temp = temp->next;
 		}
 		else
-			return(0);
+			return (0);
 	}
 	if (!reverse)
-		return(1);
-	return(0);
+		return (1);
+	return (0);
 }
