@@ -4,7 +4,7 @@ def new_in_list(my_list, idx, element):
     if idx < 0:
         return new
     ln = len(new)
-    if idx > ln:
+    if idx > ln - 1:
         return new
     new[idx] = element
     return new
