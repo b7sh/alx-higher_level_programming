@@ -58,5 +58,5 @@ int is_palindrome(listint_t **head)
 	}
 	if (!reverse)
 		return(1);
-	return(0)
+	return(0);
 }
