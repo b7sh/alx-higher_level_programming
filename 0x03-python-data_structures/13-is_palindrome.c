@@ -11,15 +11,15 @@
 void reverse_listint(listint_t **head)
 {
 	listint_t *prev = NULL;
-	listint_t current = *head;
-	listint_t next = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
 
-	while (current != NULL)
+	while (current)
 	{
 		next = current->next;
 		current->next = prev;
 		prev = current;
-		currrent = next;
+		current = next;
 	}
 	*head = prev;
 }
@@ -27,20 +27,20 @@ void reverse_listint(listint_t **head)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *s = *head, f = *head, *temp = *head, *reverse = NULL;
+	listint_t *s = *head, *f = *head, *temp = *head, *reverse = NULL;
 	if (*head == NULL || (*head)->next == NULL)
 		return(1);
 	while(1)
 	{
 		f = f->next->next;
-		if (f == NULL)
+		if (!f)
 		{
 			reverse = s->next;
 			break;
 		}
-		if (f->next == NULL)
+		if (!f->next)
 		{
-			reverse = s->next->next
+			reverse = s->next->next;
 			break;
 		}
 	}
@@ -54,7 +54,7 @@ int is_palindrome(listint_t **head)
 			temp = temp->next;
 		}
 		else
-			return(0)
+			return(0);
 	}
 	return (1);
 }
