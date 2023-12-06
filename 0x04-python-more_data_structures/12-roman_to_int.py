@@ -4,13 +4,10 @@ def roman_to_int(roman_string):
     i = 0
     number = 0
     while i < len(roman_string):
-        if(i + 1 < len(roman_stirng):
-            if(roman[roman_string[i]] < roman[roman_string[i + 1]]:
-                num+=(roman[roman_string[i + 1]]-roman[roman_string[i]])
-                i+=2
+        if i + 1 < len(roman_string) and roman[roman_string[i]] < roman[roman_string[i + 1]]:
+            number+=(roman[roman_string[i + 1]]-roman[roman_string[i]])
+            i+=2
         else:
-        num += roman[roman_string[i]]
-        i+=1
-    if roman_string == None:
-        return 0
-    return num
+            number += roman[roman_string[i]]
+            i+=1
+    return number
