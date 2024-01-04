@@ -6,12 +6,10 @@ class Rectangle():
     """represent the rectangle"""
     def __init__(self, width=0, height=0):
         """initialization of rectangle
-
         args:
 
         width (int): the width
         height (int): the height
-
         """
         self.width = width
         self.height = height
@@ -50,4 +48,4 @@ class Rectangle():
         """the perimeter value"""
         if self.__width == 0 or self.__height == 0:
             return 0
-        return (self.__width + self.__height) * 2
+        return self.__width * 2 + self.__height * 2
