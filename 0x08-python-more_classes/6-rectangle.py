@@ -3,12 +3,13 @@
 
 
 class Rectangle():
-    number_of_instances = 0
     """
     represent the Rectangle
         artribute:
         number_of_instances
     """
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """initilization of the reactangle
         args:
