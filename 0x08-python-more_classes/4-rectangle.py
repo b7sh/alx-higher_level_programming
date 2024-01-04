@@ -4,7 +4,7 @@
 
 class Rectangle():
     """operating the rectangle"""
-    def __init__(self, width, height):
+    def __init__(self, width=0, height=0):
         """initilization of the rectangle
         args:
 
@@ -65,7 +65,8 @@ class Rectangle():
         """
         return a string representation of the rectangle
         to be able to recreate a new instance
-        """
-        width_height = "(Rectangle" + str(self__width)
+        width_height = "(Rectangle" + str(self.__width)
         width_height += ", " + str(self.__height) + ")"
         return width_height
+        """
+        return f"Rectangle({self.__width}, {self.__height})"
