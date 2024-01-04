@@ -59,7 +59,7 @@ class Rectangle():
                 hold_str += "#" * self.__width
                 if i < self.__height - 1:
                     hold_str += "\n"
-                return hold_str
+            return hold_str
 
     def __repr__(self):
         """return a string representation of the rectangleto"""
