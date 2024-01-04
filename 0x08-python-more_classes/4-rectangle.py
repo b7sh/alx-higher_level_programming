@@ -69,4 +69,4 @@ class Rectangle():
         width_height += ", " + str(self.__height) + ")"
         return width_height
         """
-        return f"Rectangle({self.__width}, {self.__height})"
+        return f"Rectangle({str(self.__width)}, {str(self.__height)})"
