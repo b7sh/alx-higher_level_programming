@@ -12,7 +12,7 @@ class Rectangle():
         height (int): the height
         """
         self.width = width
-        self.height= height
+        self.height = height
 
     @property
     def width(self):
@@ -66,4 +66,6 @@ class Rectangle():
         return a string representation of the rectangle
         to be able to recreate a new instance
         """
-        return f"Rectangle({self.__width}, {self.__height})"
+        width_height = "(Rectangle" + str(self__width)
+        width_height += ", " + str(self.__height) + ")"
+        return width_height
