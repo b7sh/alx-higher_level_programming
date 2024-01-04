@@ -13,33 +13,33 @@ class Rectangle():
         width (int): the width of the rectangle
         height (int): the height of the rectangle
         """
-        self._width = width
-        self._height = height
+        self.__width = width
+        self.__height = height
 
         @property
         def width(self):
             """the width value"""
-            return self._width
+            return self.__width
 
         @width.setter
         def width(self, value):
-            if not self._width.isdigit():
+            if not self.__width.isdigit():
                 raise TypeError("width must be an integer")
             else:
-                if self._width < 0:
+                if self.__width < 0:
                     raise ValueError("width must be >= 0")
-            self.width = value
+            self.__width = value
 
         @property
         def height(self):
             """the height value"""
-            return self.height
+            return self.__height
 
         @height.setter
         def height(self, value):
-            if not self.height.isdigit():
+            if not self.__height.isdigit():
                 raise TypeError("height must be an integer")
             else:
-                if self.height < 0:
+                if self.__height < 0:
                     raise ValueError("height must be >= 0")
-            self.height = value
+            self.__height = value
