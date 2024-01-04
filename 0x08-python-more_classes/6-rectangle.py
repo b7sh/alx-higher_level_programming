@@ -4,7 +4,11 @@
 
 class Rectangle():
     number_of_instances = 0
-    """represent the Rectangle"""
+    """
+    represent the Rectangle
+        artribute:
+        number_of_instances
+    """
     def __init__(self, width=0, height=0):
         """initilization of the reactangle
         args:
@@ -71,5 +75,5 @@ class Rectangle():
 
     def __del__(self):
         """Print the message hen an instance is deleted"""
-        print("Bye rectangle...")
         type(self).number_of_instances -= 1
+        print("Bye rectangle...")
