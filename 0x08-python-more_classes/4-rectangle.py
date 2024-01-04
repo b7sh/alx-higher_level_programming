@@ -65,8 +65,7 @@ class Rectangle():
         """
         return a string representation of the rectangle
         to be able to recreate a new instance
+        """
         width_height = "(Rectangle" + str(self.__width)
         width_height += ", " + str(self.__height) + ")"
         return width_height
-        """
-        return f"Rectangle({str(self.__width)}, {str(self.__height)})"
