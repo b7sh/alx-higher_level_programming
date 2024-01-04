@@ -62,10 +62,7 @@ class Rectangle():
                 return hold_str
 
     def __repr__(self):
-        """
-        return a string representation of the rectangle
-        to be able to recreate a new instance
-        """
-        width_height = "(Rectangle" + str(self.__width)
-        width_height += ", " + str(self.__height) + ")"
-        return width_height
+        """return a string representation of the rectangleto"""
+        rec = "Rectangle(" + str(self.__width)
+        rec += ", " + str(self.__height) + ")"
+        return rec
