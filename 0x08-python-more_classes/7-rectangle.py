@@ -67,7 +67,7 @@ class Rectangle():
             str_hold = ""
             for i in range(self.__height):
                 str_hold += str(self.print_symbol) * self.__width
-                if i < self.__height:
+                if i < self.__height - 1:
                     str_hold += "\n"
             return str_hold
 
