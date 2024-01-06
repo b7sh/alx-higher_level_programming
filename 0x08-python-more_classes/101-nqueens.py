@@ -13,75 +13,71 @@ attribute:
 import sys
 
 
-def board(n):
+def initialize_board(size):
     """initilize the size"""
-    board = []
-    for i in range(n):
-        board.append([])
-    [row.append(' ') for i in range(n) for row in board]
-    return board
+    return [[' ' for _ in range(size) for _ in range(size)]]
 
 
-def copy(board):
+def copy_board(board):
     """return copy of the board"""
     if isinstance(board, list):
-        return list(map(copy, board))
+        return [copy_board(row) for row in board]
     return board
 
 
-def solution(board):
+def get_queen_positions(board):
     """return the solution"""
-    solution = []
+    position = []
     for x in range(len(board)):
         for y in range(len(board)):
             if board[x][y] == 'Q':
-                solution.append([x][y])
+                position.append([x, y])
                 break
-    return solution
+    return position
 
 
-def xout(board, row, coloum):
+def mark_attacked_positions(board, row, column):
     """ spot the board
     args:
     board (list): the obard
     row (int): the row
     coloum (int): the coloum
     """
-    for x in range(coloum + 1, len(board)):
+    for x in range(column + 1, len(board)):
         board[row][x] == "x"
-    for x in range(coloum - 1, -1, -1):
+    for x in range(column - 1, -1, -1):
         board[row][x] = "x"
     for y in range(row + 1, len(board)):
-        board[y][coloum] = "x"
+        board[y][column] = "x"
     for y in range(row - 1, -1, -1):
-        board[y][coloum]
-    c = coloum + 1
+        board[y][column]
+    c = column + 1
     for y in range(row + 1, len(board)):
         if c >= len(board):
             break
         board[y][c] = "x"
-        c = c + 1
-    c = coloum - 1
+        c += 1
+    c = column - 1
     for y in range(row - 1, -1, -1):
         if c < 0:
             break
         board[y][c]
         c = c - 1
-    c = coloum + 1
+    c = column + 1
     for y in range(row - 1, -1, -1):
         if c >= len(board):
             break
         board[y][c] = "x"
-        c = c + 1
-    c = coloum - 1
+        c += 1
+    c = column - 1
     for y in range(row + 1, len(board)):
         if c < 0:
             break
         board[y][c] = "x"
-        c = c - 1
+        c -= 1
 
 
-def solve(board, row, q, sol):
+def solve_n_queens(chess_board, row, queens, solutions):
     """solve the puzzle
     args:
     board (list): the board
@@ -89,16 +85,18 @@ def solve(board, row, q, sol):
     q (int): the queens
     sol (list): the solution
     """
-    if q == len(board):
-        sol.append(solution(board))
-        return sol
-    for x in range(len(board)):
-        if board[row][x] == " ":
-            c_board = copy(board)
-            c_board[row][x] = "Q"
-            xout(c_board, row, x)
-            sol = solve(c_board, row + 1, q + 1, sol)
-    return sol
+    if queens == len(chess_board):
+        solutions.append(get_queen_positions(chess_board))
+        return solutions
+    for x in range(len(chess_board)):
+        if chess_board[row][x] == " ":
+            copied_board = copy_board(chess_board)
+            copied_board[row][x] = "Q"
+            mark_attacked_positions(copied_board, row, x)
+            solutions = solve_n_queens(
+                    copied_board, row + 1, queens + 1, solutions
+                    )
+    return solutions
 
 
 if __name__ == "__main__":
@@ -108,10 +106,11 @@ if __name__ == "__main__":
     if not sys.argv[1].isdigit():
         print("N must be a number")
         sys.exit(1)
-    if int(sys.argv[1]) < 4:
+    size = int(sys.argv[1])
+    if size < 4:
         print("N must be at least 4")
         sys.exit(1)
-    board = board(int(sys.argv[1]))
-    solution = solve(board, 0, 0, [])
-    for s in solution:
-        print(s)
+    chess_board = initialize_board(size)
+    solution_list = solve_n_queens(chess_board, 0, 0, [])
+    for solution in solution_list:
+        print(solution)
