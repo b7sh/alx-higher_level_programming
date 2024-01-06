@@ -15,7 +15,7 @@ import sys
 
 def initialize_board(size):
     """initilize the size"""
-    return [[' ' for _ in range(size) for _ in range(size)]]
+    return [[' ' for _ in range(size)] for _ in range(size)]
 
 
 def copy_board(board):
@@ -27,13 +27,13 @@ def copy_board(board):
 
 def get_queen_positions(board):
     """return the solution"""
-    position = []
+    positions = []
     for x in range(len(board)):
         for y in range(len(board)):
             if board[x][y] == 'Q':
-                position.append([x, y])
+                positions.append([x, y])
                 break
-    return position
+    return positions
 
 
 def mark_attacked_positions(board, row, column):
