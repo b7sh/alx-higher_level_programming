@@ -2,7 +2,7 @@
 """a function that adds a new attribute to an object"""
 
 
-def add_new_attr(obj, attr, value):
+def add_attribute(obj, attr, value):
     """adds new attributes
     args:
     abj (any): the object
