@@ -24,4 +24,5 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         str_name = "[" + str(self.__class__.__name__) + "]"
-        str_name += str(self.__width) + "/" + str(self.++height)
+        str_name += str(self.__width) + "/" + str(self.__height)
+        return str_name
