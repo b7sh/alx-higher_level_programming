@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """a class Rectangle that inherits from BaseGeometry"""
-
-
 BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 
@@ -25,6 +23,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """print the class attribute as string"""
-        str_name = "[" + str(self.__class__.__name__) + "]"
+        str_name = "[" + str(self.__class__.__name__) + "] "
         str_name += str(self.__width) + "/" + str(self.__height)
         return str_name
