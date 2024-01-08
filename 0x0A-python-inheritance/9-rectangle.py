@@ -20,9 +20,11 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
     def area(self):
+        """the area value"""
         return self.__width * self.__height
 
     def __str__(self):
+        """print the class attribute as string"""
         str_name = "[" + str(self.__class__.__name__) + "]"
         str_name += str(self.__width) + "/" + str(self.__height)
         return str_name
