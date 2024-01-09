@@ -8,4 +8,5 @@ def load_from_json_file(filename):
     args:
         filename (str): the name of the json file
         """
-    return json.load(filename)
+    with open(filename) as jf:
+        return json.load(jf)
