@@ -3,6 +3,7 @@
 
 
 def read_file(filename=""):
+    """print the content of the file"""
     with open(filename, 'r', encoding='UTF-8') as rf:
         for line in rf:
-            print(line, end='')
+            print(line, end="")
