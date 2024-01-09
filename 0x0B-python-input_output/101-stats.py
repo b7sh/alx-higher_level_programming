@@ -40,7 +40,7 @@ if __name__ == "__main__":
                         stat_code[i[-2]] += 1
             except IndexError:
                 pass
-    print_status(size, stat_code)
+        print_status(size, stat_code)
     except KeyboardInterrupt:
         print_status(size, stat_code)
         raise
