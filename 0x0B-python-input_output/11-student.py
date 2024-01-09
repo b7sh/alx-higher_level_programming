@@ -20,7 +20,7 @@ class Student:
         of a Student instance
         """
         if (type(attrs) == list and all(
-            type(el) == str for el in attrs)):
+                type(el) == str for el in attrs)):
             return {x: getattr(self, x) for x in attrs if hasattr(self, x)}
         return self.__dict__
 
