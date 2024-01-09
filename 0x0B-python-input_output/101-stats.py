@@ -12,13 +12,14 @@ def print_status(size, stat_code):
     for k in sorted(stat_code):
         print("{}: {}".format(k, stat_code[k]))
 
+
 if __name__ == "__main__":
     import sys
     size = 0
     stat_code = {}
     v_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
     count = 0
-    
+
     try:
         for i in sys.stdin:
             if count == 10:
