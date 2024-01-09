@@ -10,5 +10,4 @@ def write_file(filename="", text=""):
         text (str): the text whoes written to the file
         """
     with open(filename, 'w', encoding='UTF-8') as wf:
-        lenght = wf.wite(text)
-        return lenght
+        return wf.write(text)
