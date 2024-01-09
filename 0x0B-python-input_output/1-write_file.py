@@ -3,6 +3,7 @@
 text file and returns the number of characters written
 """
 
+
 def write_file(filename="", text=""):
     """return the number of characters written to the file
     args:
