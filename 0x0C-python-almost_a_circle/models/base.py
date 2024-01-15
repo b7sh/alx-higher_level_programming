@@ -84,11 +84,11 @@ class Base:
             else:
                 if cls.__name__ == "Rectangle":
                     names = ["id", "width", "height", "x", "y"]
-                elif cls.__name__ == "Square":
+                else:
                     names = ["id", "size", "x", "y"]
-            new_file = csv.DictWriter(f, fieldnames=names)
-            for ob in list_objs:
-                new_file.writerow(ob.to_dictionary())
+                new_file = csv.DictWriter(f, fieldnames=names)
+                for ob in list_objs:
+                    new_file.writerow(ob.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
