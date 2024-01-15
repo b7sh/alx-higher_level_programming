@@ -40,7 +40,7 @@ class Base:
         json_list = []
         if list_objs is not None:
             json_list = [line.to_dictionary() for line in list_objs]
-            with open(file_name, 'w') as f:
+            with open(file_name, 'w', encoding="utf-8") as f:
                 f.write(cls.to_json_string(json_list))
 
     @staticmethod
@@ -80,16 +80,17 @@ class Base:
         """serializes the csv file"""
         file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
+            writer = csv.writer(f)
             if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                new_file = csv.DictWriter(f, fieldnames=fieldnames)
-                for ob in list_objs:
-                    new_file.writerow(ob.to_dictionary())
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        writer.writerow([obj.id,
+                                obj.width, obj.height, obj.x, obj.y])
+                    else:
+                        writer.writerow([obj.id,
+                                obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
