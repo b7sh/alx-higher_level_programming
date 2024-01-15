@@ -81,17 +81,16 @@ class Base:
         """write to csv file"""
         file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
-            writer = csv.writer(f)
             if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
                 for obj in list_objs:
-                    if cls.__name__ == "Rectangle":
-                        writer.writerow(
-                                [obj.id, obj.width, obj.height, obj.x, obj.y])
-                    else:
-                        writer.writerow(
-                                [obj.id, obj.size, obj.x, obj.y])
+                    writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
