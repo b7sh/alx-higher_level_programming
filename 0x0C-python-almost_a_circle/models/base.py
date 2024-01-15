@@ -78,7 +78,6 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """serializes the csv file"""
         file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
             writer = csv.writer(f)
@@ -95,7 +94,6 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """deserializes the csv file"""
         file_name = "{}.csv".format(cls.__name__)
         try:
             with open(file_name, "r", newline="") as f:
@@ -108,7 +106,7 @@ class Base:
                         dict(
                             [key, int(value)] for key,
                             value in line.items()) for line in list_of_dicts]
-                return [cls.create(**line) for line in list_of_dicts]
+            return [cls.create(**line) for line in list_of_dicts]
         except IOError:
             return []
 
