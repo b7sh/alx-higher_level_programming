@@ -43,7 +43,7 @@ class Base:
             if list_objs is None:
                 f.wite("[]")
             new_list = [line.to_dictionary() for line in list_objs]
-            f.write(cls.to_json_string(new_list))
+            f.write(Base.to_json_string(new_list))
 
     @staticmethod
     def from_json_string(json_string):
