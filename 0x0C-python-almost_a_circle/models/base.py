@@ -4,6 +4,7 @@ import json
 import csv
 import turtle
 
+
 class Base:
     """Class Base
     This class is the “base” of all other classes in this project
@@ -80,7 +81,7 @@ class Base:
     def save_to_file_csv(cls, list_objs):
         """serializes the csv file"""
         file_name = cls.__name__ + ".csv"
-        with open(file_name, "w",newline="") as f:
+        with open(file_name, "w", newline="") as f:
             if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
@@ -103,9 +104,10 @@ class Base:
                 else:
                     names = ["id", "size", "x", "y"]
                 list_of_dicts = csv.DictReader(f, fieldnames=names)
-                list_of_dicts = [dict([key, int(value)] for key,
-                    value in line.items())
-                    for line in list_of_dicts]
+                list_of_dicts = [
+                        dict(
+                            [key, int(value)] for key,
+                            value in line.items()) for line in list_of_dicts]
                 return [cls.create(**line) for line in list_of_dicts]
         except IOError:
             return []
