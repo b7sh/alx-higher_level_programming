@@ -81,33 +81,38 @@ class Base:
         """write to csv file"""
         file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
+            writer = csv.writer(f)
             if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
                 for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+                    if cls.__name__ == "Rectangle":
+                        writer.writerow([
+                            obj.id, obj.width, obj.height, obj.x, obj.y])
+                    elif cls.__name__ == "Square":
+                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
         file_name = "{}.csv".format(cls.__name__)
+        instances = []
         try:
             with open(file_name, "r", newline="") as f:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "widht", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                list_of_dicts = csv.DictReader(f, fieldnames=fieldnames)
-                list_of_dicts = [dict(
-                            [key, int(value)] for key,
-                            value in line.items()) for line in list_of_dicts]
-                return [cls.create(**line) for line in list_of_dicts]
-        except IOError:
-            return []
+                reader = csv.reader(f)
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        instance = cls(
+                                int(row[1]), int(
+                                    row[2]), int(
+                                        row[3]), int(row[4]), int(row[0]))
+                    elif cls.__name__ == "Square":
+                        instance = cls(
+                                int(row[1]), int(
+                                    row[2]), int(row[3]), int(row[0]))
+                    instances.append(instance)
+        except FileNotFoundError:
+            pass
+        return instances
 
     @staticmethod
     def draw(list_rectangles, list_squares):
