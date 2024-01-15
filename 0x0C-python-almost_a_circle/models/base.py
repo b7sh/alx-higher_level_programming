@@ -78,6 +78,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """write to csv file"""
         file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
             writer = csv.writer(f)
@@ -94,13 +95,14 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """read from csv file"""
         file_name = "{}.csv".format(cls.__name__)
+        if cls.__name__ == "Rectangle":
+            fieldnames = ["id", "widht", "height", "x", "y"]
+        else:
+            fieldnames = ["id", "size", "x", "y"]
         try:
             with open(file_name, "r", newline="") as f:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "widht", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
                 list_of_dicts = csv.DictReader(f, fieldnames=fieldnames)
                 list_of_dicts = [
                         dict(
