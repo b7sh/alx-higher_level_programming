@@ -77,7 +77,7 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """serializes the csv file"""
-        file_name = cls.__name__ + ".csv"
+        file_name = "{}.csv".format(cls.__name__)
         with open(file_name, "w", newline="") as f:
             if list_objs is None or list_objs == []:
                 f.write("[]")
@@ -93,7 +93,7 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """deserializes the csv file"""
-        file_name = cls.__name__
+        file_name = "{}.csv".format(cls.__name__)
         try:
             with open(file_name, "r", newline="") as f:
                 if cls.__name__ == "Rectangle":
