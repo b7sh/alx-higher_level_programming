@@ -68,7 +68,7 @@ class Base:
     def load_from_file(cls):
         file_name = "{}.json".format(cls.__name__)
         try:
-            with open(file_name, "r") as f:
+            with open(file_name, "r", encoding="utf-8") as f:
                 new_list = Base.from_json_string(f.read())
                 return [cls.create(**line) for line in new_list]
         except IOError:
