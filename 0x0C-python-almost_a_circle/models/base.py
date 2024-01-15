@@ -39,10 +39,8 @@ class Base:
         of list_objs to a file
         """
         file_name = "{}.json".format(cls.__name__)
-        with open(file_name, 'w', encoding="utf-8") as f:
-            if list_objs is None:
-                f.wite("[]")
-            else:
+        if list_objs is not None:
+            with open(file_name, 'w', encoding="utf-8") as f:
                 new_list = [line.to_dictionary() for line in list_objs]
                 f.write(cls.to_json_string(new_list))
 
