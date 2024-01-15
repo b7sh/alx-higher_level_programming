@@ -18,9 +18,10 @@ class Square(Rectangle):
     def __str__(self):
         """return the presentation of the square"""
         return "[{}] ({}) {}/{} - {}".format(
-                Square.__name__, self.id, self.x, self.y, self.size)
+                Square.__name__, self.id, self.x, self.y, self.width)
 
     @property
+    """the size of the square"""
     def size(self):
         return self.width
 
