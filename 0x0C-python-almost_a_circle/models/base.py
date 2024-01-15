@@ -38,7 +38,7 @@ class Base:
         """save the JSON file object to file"""
         file_name = cls.__name__ + ".json"
         if list_objs is None:
-            json_list = []
+            return []
         else:
             json_list = [line.to_dictionary() for line in list_objs]
             with open(file_name, 'w', encoding="utf-8") as f:
