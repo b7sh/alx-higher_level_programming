@@ -66,10 +66,10 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        file_name = cls.__name__ + ".json"
+        file_name = "{}.json".format(cls.__name__)
         try:
             with open(file_name, "r") as f:
-                new_list = cls.from_json_string(f.read())
+                new_list = Base.from_json_string(f.read())
                 return [cls.create(**line) for line in new_list]
         except IOError:
             return []
