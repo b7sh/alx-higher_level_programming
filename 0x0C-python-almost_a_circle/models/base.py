@@ -84,7 +84,7 @@ class Base:
             else:
                 if cls.__name__ == "Rectangle":
                     names = ["id", "width", "height", "x", "y"]
-                else:
+                elif cls.__name__ == "Square":
                     names = ["id", "size", "x", "y"]
             new_file = csv.DictWriter(f, fieldnames=names)
             for ob in list_objs:
@@ -98,7 +98,7 @@ class Base:
             with open(file_name, "r", newline="") as f:
                 if cls.__name__ == "Rectangle":
                     names = ["id", "widht", "height", "x", "y"]
-                else:
+                elif cls.__name__ == "Square":
                     names = ["id", "size", "x", "y"]
                 list_of_dicts = csv.DictReader(f, fieldnames=names)
                 list_of_dicts = [
