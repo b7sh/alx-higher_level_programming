@@ -100,12 +100,12 @@ class Base:
                     fieldnames = ["id", "widht", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                list_of_dicts = csv.DictReader(f, fieldnames=names)
+                list_of_dicts = csv.DictReader(f, fieldnames=fieldnames)
                 list_of_dicts = [
                         dict(
                             [key, int(value)] for key,
                             value in line.items()) for line in list_of_dicts]
-                return [cls.create(**dic) for dic in list_of_dicts]
+                return [cls.create(**line) for line in list_of_dicts]
         except IOError:
             return []
 
