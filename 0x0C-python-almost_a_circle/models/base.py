@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """the class base module"""
 import json
-
+import csv
+import turtle
 
 class Base:
     """Class Base
@@ -74,3 +75,72 @@ class Base:
                 return [cls.create(**line) for line in new_list]
         except IOError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serializes the csv file"""
+        file_name = cls.__name__ + ".csv"
+        with open(file_name, "w",newline="") as f:
+            if list_objs is None or list_objs == []:
+                f.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    names = ["id", "width", "height", "x", "y"]
+                else:
+                    names = ["id", "size", "x", "y"]
+            new_file = csv.DictWriter(f, fieldnames=names)
+            for ob in list_objs:
+                new_file.writerow(ob.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserializes the csv file"""
+        file_name = cls.__name__
+        try:
+            with open(file_name, "r", newline="") as f:
+                if cls.__name__ == "Rectangle":
+                    names = ["id", "widht", "height", "x", "y"]
+                else:
+                    names = ["id", "size", "x", "y"]
+                list_of_dicts = csv.DictReader(f, fieldnames=names)
+                list_of_dicts = [dict([key, int(value)] for key,
+                    value in line.items())
+                    for line in list_of_dicts]
+                return [cls.create(**line) for line in list_of_dicts]
+        except IOError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        mul = turtle.Turtle()
+        wn = turtle.Screen()
+        turtle.colormode(255)
+        wn.bgcolor(170, 30, 20)
+        mul.shape("turtle")
+        mul.pensize(4)
+        mul.color("brown")
+
+        for rad in list_rectangle:
+            mul.showturtle()
+            mul.up()
+            mul.goto(rad.x, rad.y)
+            mul.down()
+            for x in range(2):
+                mul.forward(rad.width)
+                mul.left(90)
+                mul.forward(rad.height)
+                mul.left(90)
+                mul.home()
+
+        mul.color("green")
+        for rad in list_squares:
+            mul.showturtle()
+            mul.up()
+            mul.goto(rad.x, rad.y)
+            mul.down()
+            for x in range(4):
+                mul.forward(rad.size)
+                mul.left(90)
+                mul.home()
+
+        turtle.exitonclick()

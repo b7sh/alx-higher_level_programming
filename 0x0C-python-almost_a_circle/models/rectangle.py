@@ -106,38 +106,12 @@ class Rectangle(Base):
         4th argument should be the x attribute
         5th argument should be the y attribute
         """
-        if args and len(args) != 0:
-            index = 0
-            for arg in args:
-                if index == 0:
-                    if arg is None:
-                        self.__init__(self.width, self.height, self.x, self.y)
-                    else:
-                        self.id = arg
-                elif index == 1:
-                    self.width = arg
-                elif index == 2:
-                    self.height = arg
-                elif index == 3:
-                    self.x = arg
-                elif index == 4:
-                    self.y = arg
-                index += 1
-        elif kwargs and len(kwargs) != 0:
-            for key, value in kwargs.items():
-                if key == "id":
-                    if value is None:
-                        sef.__init__(self.width, self.height, self.x, self.y)
-                    else:
-                        self.id = value
-                elif key == "width":
-                    self.width = value
-                elif key == "height":
-                    self.height == value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
+        names = ["id", "width", "height", "x", "y"]
+        for key, value in zip(names, args):
+            setattr(self, key, value)
+        for key, value in kwargs.items():
+            if key in names:
+                setattr(self, key, value)
 
     def to_dictionary(self):
         """the dictionary representing ro Rectangle"""
