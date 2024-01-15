@@ -83,10 +83,10 @@ class Base:
                 f.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
-                    names = ["id", "width", "height", "x", "y"]
+                    fieldnames = ["id", "width", "height", "x", "y"]
                 else:
-                    names = ["id", "size", "x", "y"]
-                new_file = csv.DictWriter(f, fieldnames=names)
+                    fieldnames = ["id", "size", "x", "y"]
+                new_file = csv.DictWriter(f, fieldnames=fieldnames)
                 for ob in list_objs:
                     new_file.writerow(ob.to_dictionary())
 
@@ -97,15 +97,15 @@ class Base:
         try:
             with open(file_name, "r", newline="") as f:
                 if cls.__name__ == "Rectangle":
-                    names = ["id", "widht", "height", "x", "y"]
-                elif cls.__name__ == "Square":
-                    names = ["id", "size", "x", "y"]
+                    fieldnames = ["id", "widht", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
                 list_of_dicts = csv.DictReader(f, fieldnames=names)
                 list_of_dicts = [
                         dict(
                             [key, int(value)] for key,
                             value in line.items()) for line in list_of_dicts]
-                return [cls.create(**line) for line in list_of_dicts]
+                return [cls.create(**dic) for dic in list_of_dicts]
         except IOError:
             return []
 
