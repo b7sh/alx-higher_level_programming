@@ -1,6 +1,6 @@
 #!/usr/bin/node
+let index = 0;
 exports.logMe = function (item) {
-  index = 0;
-  console.log(`${index}: ${item}`);
+  console.log(index + ':' + ' ' + item);
   index++;
 };
