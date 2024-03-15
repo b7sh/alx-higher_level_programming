@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-ains the class definition of a State and
+contains the class definition of a State and
 an instance Base = declarative_base()
 '''
 from sqlalchemy import Column, String, Integer, MetaData
@@ -10,7 +10,7 @@ mymetadata = MetaData()
 Base = declarative_base(metadata=mymetadata)
 
 
-class state(Base):
+class State(Base):
     '''
     inherits from Base Tips
     links to the MySQL table stat
