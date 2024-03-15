@@ -13,7 +13,7 @@ if __name__ == "__main__":
                                  db=database, port=3306)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM states \
-                    WHERE name LIKE 'N%' \
+                    WHERE name LIKE BINARY 'N%' \
                     ORDER BY states.id")
     rows = cursor.fetchall()
     for row in rows:
