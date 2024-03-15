@@ -15,7 +15,7 @@ if __name__ == "__main__":
                     states ON states.id=cities.state_id \
                     WHERE states.name=%s""", (match_arg,))
     rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+    lst = list(row[0] for row in rows)
+    print(*lst, sep=', ')
     cursor.close()
     connection.close()
