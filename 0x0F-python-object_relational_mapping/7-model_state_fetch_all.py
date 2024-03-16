@@ -5,12 +5,15 @@ from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
+
 if __name__ == "__main":
+    '''
     username, password, database = sys.argv[1:]
+    '''
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        username, password, database))
+        sys.argv[1], sys.argv[2], sys.argv[3]))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for obj in session.query(state).order_by(state.id):
+    for obj in session.query(State).order_by(State.id):
         print(obj.id, obj.name, sep=': ')
