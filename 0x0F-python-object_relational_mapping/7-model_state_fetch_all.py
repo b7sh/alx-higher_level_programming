@@ -9,9 +9,11 @@ from model_state import Base, State
 if __name__ == "__main__":
     username, password, database = sys.argv[1:]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        username, password, database)
+                            username, password, database))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for obj in session.query(State).order_by(State.id):
-        print(obj.id, obj.name, sep=': ')
+    states = session.query(State).order_by(State.id)
+    for state in states:
+        print(state.id, state.name, sep=': ')
+    session.close()
