@@ -20,4 +20,3 @@ if __name__ == "__main__":
         print("Nothing")
     else:
         print(state.id, state.name, sep=': ')
-    session.close()
