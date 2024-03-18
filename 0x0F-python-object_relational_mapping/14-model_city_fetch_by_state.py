@@ -11,8 +11,9 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     name, password, database = sys.argv[1:]
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                            .format(name, password, database))
+    engine = create_engine(
+            'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+                name, password, database))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
