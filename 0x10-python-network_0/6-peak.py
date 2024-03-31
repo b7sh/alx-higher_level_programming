@@ -5,7 +5,7 @@
 def find_peak(list_of_integers):
     """finds a peak in a list of unsorted integers"""
 
-    if list_of_integers == []:
+    if list_of_integers is None or list_of_integers == []:
         return None
     low = 0
     heigh = len(list_of_integers)
