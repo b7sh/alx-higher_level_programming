@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """ fetche https://alx-intranet.hbtn.io/stat """
-import urllib.request
 
 
 if __name__ == "__main__":
+    import urllib.request
+
     req = urllib.request.Request("https://alx-intranet.hbtn.io/status")
     with urllib.request.urlopen("https://alx-intranet.hbtn.io/status") as response:
         html = response.read()
